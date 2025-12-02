@@ -1,60 +1,87 @@
+/* Base Styling */
 body {
     font-family: Arial, sans-serif;
     margin: 20px;
-    background-color: #f5f5f5;
+    background-color: #FFF5B8; /* soft background */
+    color: #4a3f2b; /* warm readable text */
 }
 
+/* Header & Footer */
 header, footer {
-    background-color: #222;
+    background-color: #CCA25A; /* golden brown */
     color: white;
-    padding: 10px;
+    padding: 15px;
     text-align: center;
+    border-radius: 6px;
 }
 
+/* Navigation Links */
 nav a {
-    color: #ddd;
+    color: #FFF5B8; /* soft cream nav links */
     margin: 0 10px;
     text-decoration: none;
+    font-weight: bold;
 }
 
 nav a:hover {
+    color: #FFB16E; /* peach/gold hover */
     text-decoration: underline;
 }
 
+/* Headings */
 h1, h2, h3 {
-    color: #333;
+    color: #CBBD93; /* warm beige headings */
 }
 
+/* Images & Content Blocks */
 .image-block {
     margin: 15px 0;
-}
-
-.flashes {
-    background-color: #ffcccc;
     padding: 10px;
-    border: 1px solid red;
+    background-color: #CBBD93; /* soft card background */
+    border-radius: 6px;
+}
+
+/* Flash Messages */
+.flashes {
+    background-color: #FFB16E; /* soft peach warning */
+    padding: 10px;
+    border: 1px solid #CCA25A;
     list-style: none;
+    border-radius: 4px;
+    color: #4a3f2b;
 }
 
+/* Footer elements */
 footer h3, footer a {
-    color: #555;
+    color: #FFF5B8; /* soft cream footer text */
 }
 
+/* Form Elements */
 form input, form select, form button {
     margin: 5px 0 10px 0;
-    padding: 5px;
+    padding: 8px;
     width: 100%;
     max-width: 300px;
+    border-radius: 4px;
+    border: 1px solid #CBBD93; /* consistent border */
 }
 
+form input, form select {
+    background-color: #FFF5B8; /* soft background */
+    color: #4a3f2b;
+}
+
+/* Button Styling */
 form button {
     width: auto;
-    background-color: #222;
+    background-color: #CCA25A; /* gold button */
     color: white;
     border: none;
     cursor: pointer;
+    font-weight: bold;
 }
 
 form button:hover {
-    background-color: #555;
+    background-color: #CBBD93; /* lighter hover */
+    color: #4a3f2b;
 }
