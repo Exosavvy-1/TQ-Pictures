@@ -108,10 +108,11 @@ def validate_password(password):
 # ROUTES
 # ---------------------------------------------------
 
-@app.route('/')
-def main_page():
-    if 'user_id' not in session:
-        return redirect(url_for('login'))
+user = User.query.get(session['user_id'])
+if not user:
+    session.pop('user_id', None)
+    flash('User not found. Please login again.')
+    return redirect(url_for('login'))
 
     user = User.query.get(session['user_id'])
 
