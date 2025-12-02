@@ -274,14 +274,17 @@ def appointment():
 # Static files serving for uploaded images/videos handled by Flask automatically from /static
 
 # Initialize DB and create default admin if needed
-@app.before_first_request
-def create_tables():
-    db.create_all()
-    if not Admin.query.filter_by(username='admin').first():
-        admin = Admin(username='admin')
-        admin.set_password('Admin123')  # default password, recommend to change
-        db.session.add(admin)
-        db.session.commit()
+def initialize_app():
+    with app.app_context():
+        db.create_all()
+        if not Admin.query.filter_by(username='admin').first():
+            admin = Admin(username='admin')
+            admin.set_password('TyraMokhotla2705')
+            db.session.add(admin)
+            db.session.commit()
+
+# Run at startup
+initialize_app()
 
 if __name__ == '__main__':
     if not os.path.exists(UPLOAD_FOLDER):
