@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% block title %}Welcome {{ user.full_name }}{% endblock %}
+{% block content %}
+<h2>Welcome, {{ user.full_name }}!</h2>
+
+<h3>Your Images</h3>
+{% for img in images %}
+<div class="image-block">
+    <img src="{{ url_for('static', filename='uploads/' ~ img.filename) }}" alt="{{ img.caption or 'Image' }}" width="300" /><br/>
+    {% if img.caption %}<strong>{{ img.caption }}</strong><br/>{% endif %}
+    <form action="{{ url_for('rate_image', image_id=img.id) }}" method="post">
+        <label>Rate this image (1-5):</label>
+        <select name="score">
+            {% for i in range(1,6) %}
+            <option value="{{ i }}" {% if user_ratings.get(img.id) == i %}selected{% endif %}>{{ i }}</option>
+            {% endfor %}
+        </select>
+        <button type="submit">Submit Rating</button>
+    </form>
+</div>
+<hr/>
+{% else %}
+<p>No images available.</p>
+{% endfor %}
+
+<h3>Book a Photo Shoot Appointment</h3>
+<form action="{{ url_for('appointment') }}" method="post">
+    <label>Phone Number:</label><br/>
+    <input type="text" name="phone_number" placeholder="e.g. +27123456789" required /><br/>
+    <label>Email:</label><br/>
+    <input type="email" name="email" required /><br/>
+    <label>Reason for photo shoot:</label><br/>
+    <input type="text" name="reason" required /><br/>
+    <label>Date:</label><br/>
+    <input type="date" name="date" required /><br/>
+    <label>Time:</label><br/>
+    <input type="time" name="time" required /><br/>
+    <button type="submit">Book Appointment</button>
+</form>
+
+<h3>Frame Sizes</h3>
+<ul>
+    {% for frame in frame_sizes %}
+    <li><strong>{{ frame.size }}</strong> - {{ frame.description }}</li>
+    {% endfor %}
+</ul>
+
+<footer>
+    <h3>Follow us on Social Media</h3>
+    <a href="https://www.tiktok.com/@TQ_Pictures" target="_blank">TikTok</a> |
+    <a href="https://www.instagram.com/TQ_Pictures" target="_blank">Instagram</a> |
+    <a href="https://twitter.com/TQ_Pictures" target="_blank">Twitter (X)</a>
+</footer>
+
+{% endblock %}
