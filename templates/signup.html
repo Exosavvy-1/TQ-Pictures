@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block title %}Sign Up{% endblock %}
+{% block content %}
+<h2>Sign Up</h2>
+<form method="post">
+    <label>Full Name:</label><br/>
+    <input type="text" name="full_name" required /><br/>
+    <label>Email:</label><br/>
+    <input type="email" name="email" required /><br/>
+    <label>Phone Number:</label><br/>
+    <input type="text" name="phone_number" placeholder="e.g. +27123456789" required /><br/>
+    <label>Password:</label><br/>
+    <input type="password" name="password" required /><br/>
+    <small>Password must be minimum 8 characters, with uppercase, lowercase, and a digit.</small><br/>
+    <button type="submit">Sign Up</button>
+</form>
+<p>Already have an account? <a href="{{ url_for('login') }}">Login here</a>.</p>
+{% endblock %}
